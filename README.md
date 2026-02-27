@@ -3,7 +3,7 @@
 A Java Swing desktop application for real-time cryptocurrency and currency conversion, built in 2025 as a university assignment.
 
 ## Description
-
+ 
 Currency Converter is a desktop GUI application that allows users to look up live exchange rates between cryptocurrencies and fiat currencies using the [CoinAPI](https://www.coinapi.io/) service. Users can register an account, log in, perform conversions, save favourite currency pairs, and set up email price alerts via Gmail that notify them when a selected coin reaches a target price.
 
 ---
