@@ -11,25 +11,6 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws Exception{
-
-
-
-
-        // Δημιουργία μεταβλητής τύπου Requests (για διαχείριση των αιτήσεων/μετατροπών)
-        //Requests rq = new Requests();
-
-
-
-
         Login log  = new Login();
-
-//        Mail mail = new Mail();
-//        mail.sendMail("You did it", """
-//                Hello dear user,
-//                bla bla bla
-//                bla bla bla
-//                """);
-
-
     }
 }
