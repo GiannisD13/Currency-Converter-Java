@@ -40,8 +40,18 @@ import static javax.mail.Message.RecipientType.TO;
 
 public class Mail {
 
-    private static final String FromEmail = "ioanisdimitriadis@gmail.com";
+    private static final String FromEmail = loadFromEmail();
     private final Gmail service;
+
+    private static String loadFromEmail() {
+        try (InputStream in = Mail.class.getResourceAsStream("/config.properties")) {
+            Properties props = new Properties();
+            props.load(in);
+            return props.getProperty("gmail.from");
+        } catch (Exception e) {
+            throw new RuntimeException("Could not load gmail.from from config.properties", e);
+        }
+    }
 
     public Mail() throws Exception {
         NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();

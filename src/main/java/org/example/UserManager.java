@@ -77,11 +77,10 @@ public class UserManager {
 
     }
     public void saveFavorites(List<String> favorites) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("favorites.yaml"))) {
-            for (String fav : favorites) {
-                writer.write("- " + fav);
-                writer.newLine();
-            }
+        Map<String, Object> data = new HashMap<>();
+        data.put("favorites", favorites);
+        try (OutputStream outputStream = new FileOutputStream("favorites.yaml")) {
+            yaml.dump(data, new OutputStreamWriter(outputStream));
         } catch (IOException e) {
             e.printStackTrace();
         }

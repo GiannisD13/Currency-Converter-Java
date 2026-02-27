@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.net.HttpURLConnection;
@@ -21,12 +22,23 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class Requests {
 
-    private static final String API_KEY = "fb93a77f-64c9-4b48-a9da-0ca9190555da";
+    private static final String API_KEY = loadApiKey();
     private static final String BASE_URL = "https://rest.coinapi.io/v1/exchangerate";
     private String formattedNumber;
+
+    private static String loadApiKey() {
+        try (InputStream in = Requests.class.getResourceAsStream("/config.properties")) {
+            Properties props = new Properties();
+            props.load(in);
+            return props.getProperty("coinapi.key");
+        } catch (Exception e) {
+            throw new RuntimeException("Could not load coinapi.key from config.properties", e);
+        }
+    }
 
     public String request(String c1,String c2,Double amount){
         String baseCurrency = c1;

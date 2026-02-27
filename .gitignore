@@ -39,5 +39,6 @@ build/
 
 ### Sensitive / Secrets ###
 src/main/resources/client_secret.json
+src/main/resources/config.properties
 tokens/
 user.yaml
